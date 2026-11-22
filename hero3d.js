@@ -314,6 +314,11 @@ function buildMountains(hero) {
   });
   hero.addEventListener("pointerleave", () => { hoverTarget = 0; });
 
+  // scrolling down the hero drifts the view sideways and lifts it a little
+  let scrollP = 0, scrollT = 0;
+  const onScroll = () => { scrollT = clamp(window.scrollY / Math.max(1, hero.offsetHeight), 0, 1); };
+  if (!reduced) { window.addEventListener("scroll", onScroll, { passive: true }); onScroll(); }
+
   let H = 3, dist = D0, tx = 0;
   function resize() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -329,8 +334,9 @@ function buildMountains(hero) {
   function render(t, dt) {
     if (!dragging) { const k = Math.exp(-dt * 2.2); dragYaw *= k; dragPitch *= k; }
     hoverYaw += (hoverTarget - hoverYaw) * Math.min(1, dt * 3);
-    const yaw = dragYaw + hoverYaw + (reduced ? 0 : Math.sin(t * 0.22) * 0.035);
-    const pitch = dragPitch;
+    scrollP += (scrollT - scrollP) * Math.min(1, dt * 6);
+    const yaw = clamp(dragYaw + hoverYaw + scrollP * 0.16 + (reduced ? 0 : Math.sin(t * 0.22) * 0.035), -0.42, 0.42);
+    const pitch = Math.min(0.15, dragPitch + scrollP * 0.045);
     const ty = H / 2;
     cam.position.set(tx + Math.sin(yaw) * Math.cos(pitch) * dist, ty + Math.sin(pitch) * dist, Math.cos(yaw) * Math.cos(pitch) * dist);
     cam.lookAt(tx, ty, 0);
