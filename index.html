@@ -322,6 +322,20 @@ footer p{margin:0}
 .about-grid p.lead{color:var(--text);font-size:1.25rem}
 .about-grid .btn{margin-top:8px}
 @media (max-width:760px){.about-grid{grid-template-columns:1fr}.about-photo{max-width:420px}}
+
+/* 3D hero (hero3d.js adds .is3d / .has3d when WebGL is up; otherwise the flat art stays) */
+.hero-grid{pointer-events:none}
+.hero-grid>*{pointer-events:auto}
+.spin-hint{display:none}
+.hero-art.is3d>svg{visibility:hidden}
+.hero-art .rig3d{position:absolute;left:-12%;top:-14%;width:124%;height:132%;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 72%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 72%,transparent 100%);touch-action:pan-y;cursor:grab;outline:0;-webkit-tap-highlight-color:transparent}
+.hero-art.is3d .spin-hint{display:flex;align-items:center;gap:8px;position:absolute;left:50%;bottom:-44px;transform:translateX(-50%);margin:0;z-index:2;pointer-events:none;white-space:nowrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:opacity .5s}
+.hero-art.is3d .spin-hint::before,.hero-art.is3d .spin-hint::after{content:"";width:18px;height:1px;background:var(--line2)}
+.hero-art.is3d .spin-hint.gone{opacity:0}
+.hero.has3d .wave,.hero.has3d svg.mtns{visibility:hidden}
+.mtns3d{position:absolute;left:0;bottom:-1px;width:100%;height:clamp(150px,22vw,300px);z-index:1;touch-action:pan-y;cursor:grab}
+.rig3d,.mtns3d{-webkit-user-select:none;user-select:none}
+.rig3d.grabbing,.mtns3d.grabbing{cursor:grabbing}
 </style>
 </head>
 <body>
@@ -389,6 +403,7 @@ footer p{margin:0}
       </ul>
     </div>
     <div class="hero-art" aria-hidden="true">
+      <p class="spin-hint">Drag to spin</p>
       <svg viewBox="0 0 520 560" role="img" focusable="false">
         <defs>
           <radialGradient id="glow" cx="50%" cy="38%" r="60%"><stop offset="0" stop-color="#f4b13d" stop-opacity=".30"/><stop offset="1" stop-color="#f4b13d" stop-opacity="0"/></radialGradient>
@@ -1213,5 +1228,6 @@ const CATALOG = {
   update();
 })();
 </script>
+<script type="module" src="hero3d.js"></script>
 </body>
 </html>
