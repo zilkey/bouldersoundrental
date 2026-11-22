@@ -469,7 +469,7 @@ footer p{margin:0}
     <div class="sec-head reveal">
       <p class="eyebrow">Build your rig</p>
       <h2>Answer a few questions. See your price.</h2>
-      <p>The total updates as you go. Nothing is sent until you choose to email me.</p>
+      <p>The total updates as you go. Nothing is sent until you choose to send it.</p>
     </div>
     <div class="calc">
       <div class="inputs" id="inputs">
@@ -1058,7 +1058,7 @@ const CATALOG = {
     h += "</dl>";
     h += '<div class="total"><span>Estimated total</span><strong id="total-num">' + money(q.total) + "</strong></div>";
     h += '<p class="fine">Estimate only. I\'ll confirm availability and the final price by email.</p>';
-    h += '<button type="button" class="btn btn-primary btn-lg" id="email-quote">Email me this quote</button>';
+    h += '<button type="button" class="btn btn-primary btn-lg" id="email-quote">Send this to Jeff</button>';
     $("#result").innerHTML = h;
     if (lastTotal !== null && lastTotal !== q.total && !reduced) {
       var n = $("#total-num"); n.classList.add("bump");
