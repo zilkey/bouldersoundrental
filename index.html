@@ -309,6 +309,16 @@ footer p{margin:0}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal{opacity:1;transform:none}
 }
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,6vw,72px);align-items:center}
+.about-photo{margin:0;position:relative}
+.about-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 35%;border-radius:var(--r);border:1px solid var(--line2);box-shadow:0 40px 80px -40px rgba(244,177,61,.35)}
+.about-grid h2{font-size:clamp(2.1rem,5vw,3.8rem);font-weight:800;margin-bottom:18px}
+.about-grid p{color:var(--muted);font-size:1.08rem;max-width:34em}
+.about-grid p.lead{color:var(--text);font-size:1.25rem}
+.about-grid .btn{margin-top:8px}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr}.about-photo{max-width:420px}}
 </style>
 </head>
 <body>
@@ -346,6 +356,7 @@ footer p{margin:0}
         <li><a href="#packages">Packages</a></li>
         <li><a href="#gear">Gear</a></li>
         <li><a href="#build">Build your rig</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -564,8 +575,25 @@ footer p{margin:0}
   </div>
 </section>
 
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap about-grid">
+    <figure class="about-photo reveal">
+      <img src="jeff.jpg" width="933" height="1400" loading="lazy" alt="Jeff Dean playing keyboard and singing on stage, with a trumpet on a stand beside him">
+    </figure>
+    <div class="reveal">
+      <p class="eyebrow">About me</p>
+      <h2>A working musician's PA.</h2>
+      <p class="lead">I'm Jeff Dean, a Boulder-based musician. I play mostly with the <a href="https://ingridavison.com/band-epk" target="_blank" rel="noopener">Ingrid Avison Band</a>.</p>
+      <p>Some of our shows don't come with a sound system, so we bring our own and I run it. That's the gear on this page. It gets used on real stages, and I know how to set it up fast and make it sound good.</p>
+      <p>When the band isn't using the PA, I rent it out so other local artists can put on a good show without buying a rig of their own.</p>
+      <p><a class="btn btn-ghost" href="https://ingridavison.com/band-epk" target="_blank" rel="noopener">See the band's EPK</a></p>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
-<section class="sec" id="faq">
+<section class="sec alt" id="faq">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Questions</p>
@@ -587,7 +615,7 @@ footer p{margin:0}
 </section>
 
 <!-- CONTACT -->
-<section class="sec alt" id="contact">
+<section class="sec" id="contact">
   <div class="wrap contact-grid">
     <div class="reveal">
       <p class="eyebrow">Contact</p>
@@ -634,21 +662,21 @@ const CATALOG = {
       desc: "With stand and cables.",
       short: "QSC K8.2 speaker", plural: "QSC K8.2 speakers",
       icon: "i-speaker",
-      price: 35,          // for one
-      pairPrice: 60,      // for two
+      price: 23,          // for one
+      pairPrice: 39,      // for two
       max: 2
     },
     sub: {
       name: "QSC KS112 powered subwoofer",
       desc: "Adds the low end for bass, kick drum and dance music.",
       short: "QSC KS112 subwoofer", plural: "QSC KS112 subwoofers",
-      icon: "i-sub", price: 45, max: 1
+      icon: "i-sub", price: 29, max: 1
     },
     mixer: {
       name: "Digital mixer",
       desc: "Your choice of two. Same price either way.",
       icon: "i-mixer",
-      price: 40,
+      price: 26,
       options: {
         xr18: {
           name: "Behringer X Air XR18",
@@ -668,7 +696,7 @@ const CATALOG = {
       name: "LD Systems MON 8 A G3 powered stage monitor",
       desc: "So performers can hear themselves.",
       short: "LD Systems MON 8 A G3 stage monitor", plural: "LD Systems MON 8 A G3 stage monitors",
-      icon: "i-monitor", price: 20, max: 1
+      icon: "i-monitor", price: 13, max: 1
     },
     vocalMic: {
       name: "Vocal mic",
@@ -692,7 +720,7 @@ const CATALOG = {
       name: "LED Mini Par Bar stage lights",
       desc: "On a stand.",
       short: "Mini Par Bar light", plural: "Mini Par Bar lights",
-      icon: "i-lights", price: 25, max: 1
+      icon: "i-lights", price: 16, max: 1
     }
   },
 
@@ -712,16 +740,16 @@ const CATALOG = {
 
   // items: quantities of gear ids. mixer is "cq12t", "xr18" or "either".
   packages: [
-    { id: "speech", name: "Speech & Solo", price: 95,
+    { id: "speech", name: "Speech & Solo", price: 60,
       blurb: "Toasts, announcements, a singer-songwriter, background music.",
       items: { speaker: 2, mixer: "cq12t", vocalMic: 1, di: 1 } },
-    { id: "duo", name: "Duo", price: 125,
+    { id: "duo", name: "Duo", price: 80,
       blurb: "Duos, small acoustic acts, coffee shops and breweries.",
       items: { speaker: 2, mixer: "either", monitor: 1, vocalMic: 2, di: 2 } },
-    { id: "band", name: "Full Band", price: 215, popular: true,
+    { id: "band", name: "Full Band", price: 140, popular: true,
       blurb: "Bands up to about 150 people.",
       items: { speaker: 2, sub: 1, mixer: "xr18", monitor: 1, vocalMic: 4, instMic: 3, di: 3 } },
-    { id: "party", name: "Party", price: 135,
+    { id: "party", name: "Party", price: 85,
       blurb: "DJs, dance parties, backyard weddings.",
       items: { speaker: 2, sub: 1, mixer: "cq12t", vocalMic: 1, lights: 1 } }
   ]
