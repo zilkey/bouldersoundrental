@@ -314,6 +314,9 @@ footer p{margin:0}
 .about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,6vw,72px);align-items:center}
 .about-photo{margin:0;position:relative}
 .about-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 35%;border-radius:var(--r);border:1px solid var(--line2);box-shadow:0 40px 80px -40px rgba(244,177,61,.35)}
+.about-photo figcaption{font-family:var(--mono);font-size:.74rem;letter-spacing:.03em;color:var(--muted);margin-top:12px;line-height:1.6}
+.about-photo figcaption a{color:var(--muted)}
+.about-photo figcaption a:hover{color:var(--amber2)}
 .about-grid h2{font-size:clamp(2.1rem,5vw,3.8rem);font-weight:800;margin-bottom:18px}
 .about-grid p{color:var(--muted);font-size:1.08rem;max-width:34em}
 .about-grid p.lead{color:var(--text);font-size:1.25rem}
@@ -580,6 +583,7 @@ footer p{margin:0}
   <div class="wrap about-grid">
     <figure class="about-photo reveal">
       <img src="jeff.jpg" width="933" height="1400" loading="lazy" alt="Jeff Dean playing keyboard and singing on stage, with a trumpet on a stand beside him">
+      <figcaption>Photos by Kevin Gallagher &middot; <a href="https://kgfilmphotography.com" target="_blank" rel="noopener">kgfilmphotography.com</a> &middot; <a href="https://www.instagram.com/mediumformat_mafia/" target="_blank" rel="noopener">@mediumformat_mafia</a></figcaption>
     </figure>
     <div class="reveal">
       <p class="eyebrow">About me</p>
